@@ -2,7 +2,7 @@
 using System.Collections;
 namespace Designer.Runtime
 {
-    public class Node
+    public abstract class Node
     {
         [NodeTooltip("Name")]
         public string Name;

@@ -46,9 +46,10 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\NodeDesigner\Editor\Scripts\DesignerUtility.cs" />
+     <Compile Include="Assets\NodeDesigner\Editor\Scripts\DesignerWindow.cs" />
      <Compile Include="Assets\NodeDesigner\Editor\Scripts\EditorZoomArea.cs" />
-     <Compile Include="Assets\NodeDesigner\Editor\Scripts\GridWindow.cs" />
      <Compile Include="Assets\NodeDesigner\Editor\Scripts\NodeDesigner.cs" />
+     <Compile Include="Assets\NodeDesigner\Editor\Scripts\SkillEditorWindow.cs" />
      <None Include="Assets\NodeDesigner\Editor\GridShader.shader" />
  <Reference Include="UnityEditor.Advertisements">
  <HintPath>D:/Program Files/Unity5/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll</HintPath>

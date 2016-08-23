@@ -13,6 +13,8 @@ namespace Designer.Runtime {
         public NodeData End;
         [NonSerialized]
         public bool selected;
+        [NonSerialized]
+        public bool mouse_on;
         public NodeConnection(NodeData begin, NodeData end)
         {
             Begin = begin;
@@ -23,11 +25,20 @@ namespace Designer.Runtime {
         }
         public void AddConnectionToNode(NodePosition beginPos, NodePosition endPos)
         {
-            Begin.AddNodeConnection(beginPos, beginPoint);
-            End.AddNodeConnection(endPos, endPoint);
+            AddConnectionToNode(Begin, beginPos, beginPoint);
+            AddConnectionToNode(End, endPos, endPoint);
         }
+
+        private void AddConnectionToNode(NodeData node, NodePosition position, NodeConnectionPoint point)
+        {
+            if (node == null) { return; }
+
+            node.AddNodeConnection(position, point);
+        }
+
         public void UpdatePointPosition()
         {
+            if (Begin == null || End == null) { return; }
             if (Begin.Position.y == End.Position.y)
             {
                 if (beginPoint.Position.x < endPoint.Position.x)
@@ -82,8 +93,14 @@ namespace Designer.Runtime {
         }
         public void UpdatePosition()
         {
-            Begin.UpdateNodeCollection();
-            End.UpdateNodeCollection();
+            if (Begin != null)
+            {
+                Begin.UpdateNodeCollection();
+            }
+            if (End != null)
+            {
+                End.UpdateNodeCollection();
+            }
             UpdatePointPosition();
         }
         public void ReplacePoint(NodeData nd)
@@ -105,6 +122,12 @@ namespace Designer.Runtime {
                 End = nd;
                 End.AddNodeConnection(NodePosition.Top, endPoint);
             }
+            UpdatePosition();
+        }
+        public void Remove()
+        {
+            Begin.RemoveNodeConnection(beginPoint.nodePosition,beginPoint);
+            End.RemoveNodeConnection(endPoint.nodePosition, endPoint);
             UpdatePosition();
         }
     }

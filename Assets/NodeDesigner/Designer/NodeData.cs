@@ -34,6 +34,10 @@ namespace Designer.Runtime
     {
         [HideInInspector]
         public int id = -1;
+        [HideInInspector]
+        public string name;
+        [HideInInspector]
+        public string comment = "";
         public bool isEntry = false;
         public bool selected = false;
 
@@ -41,6 +45,7 @@ namespace Designer.Runtime
         public NodeColor nodeColor = NodeColor.Def;
 
         public Node node = null;
+
 
         //[HideInInspector]
         public List<NodeCollection> nodeCollection = new List<NodeCollection>();
@@ -51,7 +56,13 @@ namespace Designer.Runtime
         private Vector2 m_Scale = new Vector2(100,100);
         private Rect m_Rect = new Rect(0, 0, 0, 0);
         private float m_Zoom = 1;
-        
+        public float Zoom
+        {
+            get
+            {
+                return m_Zoom;
+            }
+        }
         public Vector2 Position
         {
             get

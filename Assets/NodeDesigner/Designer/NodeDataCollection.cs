@@ -51,6 +51,7 @@ namespace Designer.Runtime
         }
         public void Remove(NodeConnection nodeConnection)
         {
+            nodeConnection.Remove();
             connection.Remove(nodeConnection);
         }
         public void Add(NodeData nodeData)
